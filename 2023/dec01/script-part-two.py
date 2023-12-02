@@ -1,8 +1,8 @@
 """
 Advent of Code
-Day 1 - Trebuchet?! : https://adventofcode.com/2023/day/1
-Part Two
+Day 1 - Part 2 : https://adventofcode.com/2023/day/1
 """
+
 import re
 
 def compute_calibration_value(line: str):
@@ -31,14 +31,11 @@ def replace_spelled_digits(line: str):
 
     return line
 
-computed_puzzle = []
+answer = 0
 
 with open('input.txt', 'r') as file:
     lines = file.readlines()
     for line in lines:
-        calibrationValue = compute_calibration_value(replace_spelled_digits(line))
-        computed_puzzle.append(calibrationValue)
-
-answer = sum(computed_puzzle)        
+        answer += compute_calibration_value(replace_spelled_digits(line))
 
 print(answer)
