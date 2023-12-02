@@ -1,8 +1,8 @@
 """
 Advent of Code
-Day 1 - Trebuchet?! : https://adventofcode.com/2023/day/1
-Part One
+Day 1 - Part 1: https://adventofcode.com/2023/day/1
 """
+
 import re
 
 def compute_calibration_value(line: str):
@@ -18,14 +18,11 @@ def compute_calibration_value(line: str):
 
     return calibration_value
 
-computed_puzzle = []
+answer = 0
 
 with open('input.txt', 'r') as file:
     lines = file.readlines()
     for line in lines:
-        calibrationValue = compute_calibration_value(line)
-        computed_puzzle.append(calibrationValue)
-
-answer = sum(computed_puzzle)        
+        answer += compute_calibration_value(line)
 
 print(answer)
