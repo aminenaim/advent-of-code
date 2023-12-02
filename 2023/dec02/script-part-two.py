@@ -1,49 +1,39 @@
 """
 Advent of Code
 Day 2 - Part 2 : https://adventofcode.com/2023/day/2
+--
+Here is a more "compact" version. I tend to prefer codes with more functions to split into logical steps.
+This version uses regular expressions and tuples for a cleaner and more concise implementation.
 """
 
-COLORS = ["red", "green", "blue"]
+import re
 
-def parse_color_set(color_set: list):
+def parse_game(game: str):
     """
-    Given a list of strings of the format ["1 red", "2 green", "3 blue", "4 red"...],
-    returns a dictionary containing the amount of occurrence for each color
+    Given a game string,
+    returns a list of tuples containing amount and color information
     """
-    colors = {color: 0 for color in COLORS}
+    return re.findall(r"(\d+) (red|green|blue)", game.split(":")[1])
 
-    for set in color_set:
-        amount, color = map(str.strip, set.split())
-        colors[color] += int(amount)
-
-    return colors
-
-def parse_game(line: str):
+def compute_power_sum(games: list[str]):
     """
-    Given a line, returns a tuple (game_number, color_sets) with color_sets being a list of dictionaries of parsed colors
+    Given a list of games (strings),
+    returns the sum of the powers of each set of cubes
     """
-    game_number = int(line.split(":")[0].split()[1])
-    color_sets = [parse_color_set(color_set.split(",")) for color_set in line.split(":")[1].split(";")]
+    lines = [parse_game(game) for game in games]
 
-    return game_number, color_sets
-
-def compute_fewer_number(color_sets):
-    """
-    Given a list of color sets,
-    returns the fewer amounts of cubes for each color
-    """
-    max_cubes = {color: max(cubes[color] for cubes in color_sets) for color in COLORS}
-    
-    return max_cubes["red"], max_cubes["green"], max_cubes["blue"]
-
-answer = 0
-
-with open('input.txt', 'r') as file:
-    lines = file.readlines()
+    result = 0
 
     for line in lines:
-        game_number, color_sets = parse_game(line)
-        red, green, blue = compute_fewer_number(color_sets)
-        answer += red * green * blue
+        fewers = {"red": 0, "green": 0, "blue": 0}
 
-print("answer :", answer)
+        for amount, color in line:
+            fewers[color] = max(fewers[color], int(amount))
+
+        result += fewers["red"] * fewers["green"] * fewers["blue"]
+
+    return result
+
+with open("input.txt", "r") as file:
+    lines = file.readlines()
+    print("answer :", compute_power_sum(lines))
