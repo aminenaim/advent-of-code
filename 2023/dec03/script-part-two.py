@@ -19,7 +19,7 @@ def lookup_gears(lines: list[str]):
 
 def cell_neighbors(x, y, matrix_length):
     neighbors = []
-    # Define the relative coordinates of neighboring cells
+    # define the relative coordinates of neighboring cells
     relative_coordinates = [(-1, -1), (-1, 0), (-1, 1),
                             (0, -1),           (0, 1),
                             (1, -1),  (1, 0),  (1, 1)]
@@ -27,7 +27,7 @@ def cell_neighbors(x, y, matrix_length):
     for dx, dy in relative_coordinates:
         new_x, new_y = x + dx, y + dy
 
-        # Check if the new coordinates are within the matrix bounds
+        # check if the new coordinates are within the matrix bounds
         if 0 <= new_x < matrix_length and 0 <= new_y < matrix_length:
             neighbors.append((new_x, new_y))
 
@@ -53,8 +53,10 @@ def compute_sum(lines: list[str]):
             
             left, right = n_y, n_y
 
+            # find the left boundary of the number
             while (lines[n_x][left-1] or "").isdigit():
                 left -= 1
+            # find the right boundary of the number
             while (lines[n_x][right+1] or "").isdigit():
                 right += 1
 
