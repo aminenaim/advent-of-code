@@ -22,3 +22,20 @@ def get_input() -> list[str]:
     except FileNotFoundError:
         print(f"error: file {file_name} not found.")
         return None
+
+def print_matrix(matrix, highlight_x,highlight_y):
+    """
+    Given a matrix and highlight coordinates,
+    prints the matrix
+    /!\ Clear command running only in Linux env  
+    """
+    print(end=" ")
+    for x in range(len(matrix)):
+        for y in range(len(matrix[x])):
+            if x == highlight_x and y == highlight_y:
+                print(f"[{matrix[x][y]}]", end="")
+            else:
+                print(f" {matrix[x][y]} ", end="")
+    print("")
+    os.system("sleep 0.300")
+    os.system("clear")
