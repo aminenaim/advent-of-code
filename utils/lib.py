@@ -23,7 +23,7 @@ def get_input() -> list[str]:
         print(f"error: file {file_name} not found.")
         return None
 
-def print_matrix(matrix, highlight_x,highlight_y):
+def print_matrix(matrix, highlight_x = -1, highlight_y = -1):
     """
     Given a matrix and highlight coordinates,
     prints the matrix
