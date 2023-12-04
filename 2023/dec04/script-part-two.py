@@ -19,7 +19,7 @@ def compute_sum(lines: list[str]):
 
     points = []
     for winning_number, numbers in cards:
-        points.append(len([number for number in numbers if winning_number.count(number) > 0]))
+        points.append(len([number for number in numbers if number in winning_number]))
 
     copies = [1] * len(points)
 
