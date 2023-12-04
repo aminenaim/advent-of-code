@@ -24,9 +24,7 @@ def compute_sum(lines: list[str]):
     copies = [1] * len(points)
 
     for i, point in enumerate(points):
-        # print(f"[{i}] --> {point}")
         for j in range(point):
-            # print(f"  ({j}), copies[{i+j+1}] += {copies[i]}")
             copies[i + j + 1] += copies[i]
 
     return sum(copies)
