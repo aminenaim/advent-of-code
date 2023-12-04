@@ -18,6 +18,9 @@ def lookup_gears(lines: list[str]):
     return gears
 
 def cell_neighbors(x, y, matrix_length):
+    """
+    Given x, y coordinates returns a list of neighboring cells within the matrix bounds
+    """
     neighbors = []
     # define the relative coordinates of neighboring cells
     relative_coordinates = [(-1, -1), (-1, 0), (-1, 1),
