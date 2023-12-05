@@ -37,7 +37,7 @@ def transform(number: int, map: list[list[int]]):
 
     for ranges in map:
         dest, source, length = ranges
-        if source <= number and number < source+length:
+        if source <= number < source+length:
             number = number-source+dest
             break
 
