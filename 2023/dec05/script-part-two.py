@@ -1,6 +1,8 @@
 """
 Advent of Code
 Day 5 - Part 2 : https://adventofcode.com/2023/day/5
+--
+Naive method, also called "turn you laptop into a toaster 101"
 """
 
 def parse_categories(lines: str):
