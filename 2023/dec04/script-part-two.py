@@ -10,7 +10,7 @@ def parse_card(card: str):
     """
     return [numbers.split() for numbers in card.split(":")[1].split("|")]
 
-def compute_sum(lines: list[str]):
+def compute_scratchards(lines: list[str]):
     """
     Given a list of cards (strings),
     returns the number of scratchcards
@@ -31,5 +31,5 @@ def compute_sum(lines: list[str]):
 
 with open("input.txt", "r") as file:
     lines = file.readlines()
-    print("answer :", compute_sum(lines))
+    print("answer :", compute_scratchards(lines))
 
