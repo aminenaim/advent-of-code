@@ -24,10 +24,6 @@ def compute_answer(lines: list[str]):
     returns the factor between every number of ways to beat the time-distance record
     """
     time, distance = parse_document(lines)
-    ways = 1
-
-    print(time)
-    print(distance)
 
     # we compute b_one and b_two our two real solutions
     new_distance = distance + 1
@@ -36,7 +32,7 @@ def compute_answer(lines: list[str]):
 
     # the number of ways is the number of int solutions between b_one and b_two
     # we floor the top value and ceil the bottom value then add 1 to include the first value
-    ways *= floor(b_one) - ceil(b_two) + 1
+    ways = floor(b_one) - ceil(b_two) + 1
     
     return ways
 
