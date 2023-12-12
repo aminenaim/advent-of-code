@@ -17,12 +17,12 @@ def navigate(grid: list[list[str]]):
     Given a grid, finds the starting cordinates and
     returns the steps number to get to the farthest tile from the starting tile
     """
-    seen = []
     s = [(r, c) for r, row in enumerate(grid) for c, char in enumerate(row) if char == 'S'][0]
+    seen = [s]
     current = s
     
 
-    while current != s or len(seen) == 0:
+    while current != s or len(seen) <= 1:
         row, col = current
         char = grid[row][col]
             
@@ -52,7 +52,7 @@ def navigate(grid: list[list[str]]):
 
         break;
     
-    return (len(seen)+1) // 2
+    return len(seen) // 2
 
 def compute_answer(lines: list[str]):
     """
